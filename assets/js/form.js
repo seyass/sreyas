@@ -1,4 +1,29 @@
-$('form').submit(function(event) {
+$(document).ready(function() {
+  // Validate the form with the id "submit-form"
+  $("#submit-form").validate({
+      rules: {
+          fname: {
+              required: true
+          },
+          gemail: {
+              required: true,
+              email: true
+          },
+          subject: {
+              required: true
+          },
+          message: {
+              required: true
+          }
+      },
+      messages: {
+          fname: "Enter your name"
+          // Add more messages for other fields if needed
+      }
+  });
+
+  // Handle form submission
+  $('form').submit(function(event) {
       // Check if the form is valid
       if ($("#submit-form").valid()) {
         $("#submit-form").submit((e)=>{
@@ -25,3 +50,4 @@ $('form').submit(function(event) {
       }
   });
 });
+
